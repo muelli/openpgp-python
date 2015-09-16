@@ -1610,6 +1610,7 @@ class OpenPGPFile(list):
                     result.setdefault("error_msg", []).append("RSA modulus has non-zero leading bits.")
                 n_hex = "{0:0{1}x}".format(n_int, n_numbytes * 2)
                 result['n'] = n_hex
+                result['n_bitlen'] = n_int.bit_length()
                 pem += "0282{0:0{1}x}00".format(n_numbytes + 1, 4) + n_hex
 
             #exponent
